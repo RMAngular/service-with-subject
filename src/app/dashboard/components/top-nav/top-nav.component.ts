@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-top-nav',
-  templateUrl: './top-nav.component.html',
-  styleUrls: ['./top-nav.component.css']
+  selector: "app-top-nav",
+  templateUrl: "./top-nav.component.html",
+  styleUrls: ["./top-nav.component.css"]
 })
 export class TopNavComponent implements OnInit {
+  role: string = "Standard";
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  onRoleChange() {
+    console.log(this.role);
   }
-
 }

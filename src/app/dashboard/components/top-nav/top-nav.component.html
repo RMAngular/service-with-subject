@@ -1,3 +1,7 @@
-<p>
-  top-nav works!
-</p>
+<div style="padding: 20px;">
+  <label for="role">Role: </label>
+  <select name="role" [(ngModel)]="role" (change)="onRoleChange()">
+    <option>Admin</option>
+    <option>Standard</option>
+  </select>
+</div>
