@@ -1,8 +1,7 @@
-<app-top-nav></app-top-nav>
+<app-top-nav (roleChange)="onRoleChange($event)"></app-top-nav>
 <div style="width: 50%; float: left">
-  <app-user-list>
-  </app-user-list>
+  <app-user-list [users]="users$ | async"></app-user-list>
 </div>
 <div style="width: 50%; float: left">
-  <app-permissions></app-permissions>
+  <app-permissions [users]="users$ | async"></app-permissions>
 </div>

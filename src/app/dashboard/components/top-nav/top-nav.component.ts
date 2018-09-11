@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { EventEmitter } from "@angular/core";
+import { Output } from "@angular/core";
 
 @Component({
   selector: "app-top-nav",
@@ -7,12 +9,14 @@ import { Component, OnInit } from "@angular/core";
 })
 export class TopNavComponent implements OnInit {
   role: string = "Standard";
+  @Output()
+  roleChange = new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit() {}
 
   onRoleChange() {
-    console.log(this.role);
+    this.roleChange.emit(this.role);
   }
 }
