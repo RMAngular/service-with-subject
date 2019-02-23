@@ -9,7 +9,15 @@ import { User } from "../models/user.model";
   providedIn: "root"
 })
 export class UserService {
-  users$ = new BehaviorSubject<User[]>([]);
+  // optional: make the behavior subject private
+  private musers$ = new BehaviorSubject<User[]>([]);
+
+  // and expose the behavior subject as an observable.
+  // Do this to prevent developers from adding to stream directly
+  // from outside the service
+  get users$(): Observable<User[]> {
+    return this.musers$;
+  }
 
   constructor(private httpClient: HttpClient) {}
 
@@ -17,7 +25,7 @@ export class UserService {
     this.httpClient
       .get<User[]>("/api/users")
       .subscribe(users =>
-        this.users$.next(
+        this.musers$.next(
           // filter should be done server side (this is a demo)
           users.filter(user => user.role === role || role === "Admin")
         )
