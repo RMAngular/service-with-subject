@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { User } from "../../../core/models/user.model";
 import { Input } from "@angular/core";
 import { Output } from "@angular/core";
@@ -9,13 +9,12 @@ import { EventEmitter } from "@angular/core";
   templateUrl: "./permissions.component.html",
   styleUrls: ["./permissions.component.css"]
 })
-export class PermissionsComponent implements OnInit {
-  @Input()
-  users: User[];
+export class PermissionsComponent {
+  @Input() users: User[];
 
   @Output() userClick = new EventEmitter<User>();
 
-  constructor() {}
-
-  ngOnInit() {}
+  onUserClick(user: User) {
+    this.userClick.emit(user);
+  }
 }
