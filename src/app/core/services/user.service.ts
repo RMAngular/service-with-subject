@@ -18,6 +18,7 @@ export class UserService {
       .get<User[]>("/api/users")
       .subscribe(users =>
         this.users$.next(
+          // filter should be done server side (this is a demo)
           users.filter(user => user.role === role || role === "Admin")
         )
       );
