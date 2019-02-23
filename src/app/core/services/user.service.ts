@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { map, tap, withLatestFrom } from "rxjs/operators";
 
 import { User } from "../models/user.model";
-import { first } from "rxjs/internal/operators/first";
 
 @Injectable({
   providedIn: "root"
@@ -24,20 +23,18 @@ export class UserService {
       );
   }
 
-  getById(id: number): Observable<User> {
-    return this.httpClient.get<User>(`/api/users/${id}`).pipe(
-      withLatestFrom(this.users$),
-      tap(([user, users]) => {
-        const index = users.map(user => user.id).indexOf(user.id);
+  getById(id: number) {
+    return this.httpClient
+      .get<User>(`/api/users/${id}`)
+      .pipe(withLatestFrom(this.users$))
+      .subscribe(([user, users]) => {
+        const index = users.map(u => u.id).indexOf(user.id);
         if (index === -1) {
           users.push(user);
-          this.users$.next(users);
         } else {
           users[index] = user;
-          this.users$.next(users);
         }
-      }),
-      map(([user]) => user)
-    );
+        this.users$.next(users);
+      });
   }
 }
