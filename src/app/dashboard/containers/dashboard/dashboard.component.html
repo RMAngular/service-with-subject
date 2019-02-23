@@ -1,7 +1,19 @@
-<app-top-nav (roleChange)="onRoleChange($event)"></app-top-nav>
-<div style="width: 50%; float: left">
-  <app-user-list [users]="users$ | async"></app-user-list>
-</div>
-<div style="width: 50%; float: left">
-  <app-permissions [users]="users$ | async"></app-permissions>
-</div>
+<mat-card>
+  <mat-card-title>Roles</mat-card-title>
+  <app-top-nav (roleChange)="onRoleChange($event)"> </app-top-nav>
+</mat-card>
+
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-title>Users</mat-card-title>
+      <app-user-list [users]="users$ | async"></app-user-list>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-title>Permissions</mat-card-title>
+      <app-permissions [users]="users$ | async"></app-permissions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
