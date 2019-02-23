@@ -1,13 +1,17 @@
-import { Component } from "@angular/core";
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from "@angular/core";
 import { User } from "../../../core/models/user.model";
-import { Input } from "@angular/core";
-import { Output } from "@angular/core";
-import { EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-permissions",
   templateUrl: "./permissions.component.html",
-  styleUrls: ["./permissions.component.css"]
+  styleUrls: ["./permissions.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PermissionsComponent {
   @Input() users: User[];

@@ -1,20 +1,19 @@
-import { Component, OnInit } from "@angular/core";
-import { EventEmitter } from "@angular/core";
-import { Output } from "@angular/core";
+import {
+  Component,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from "@angular/core";
 
 @Component({
   selector: "app-top-nav",
   templateUrl: "./top-nav.component.html",
-  styleUrls: ["./top-nav.component.css"]
+  styleUrls: ["./top-nav.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TopNavComponent implements OnInit {
+export class TopNavComponent {
   role: string = "Standard";
-  @Output()
-  roleChange = new EventEmitter<string>();
-
-  constructor() {}
-
-  ngOnInit() {}
+  @Output() roleChange = new EventEmitter<string>();
 
   onRoleChange() {
     this.roleChange.emit(this.role);

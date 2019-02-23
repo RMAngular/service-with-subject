@@ -4,7 +4,7 @@ export class InMemoryDataService {
   createDb(): { users: User[] } {
     const users = [
       { id: 1, name: "Jesse Sanders", role: "Admin" },
-      { id: 2, name: "Steve Whitman", role: "Standard" },
+      { id: 2, name: "Steve Witman", role: "Standard" },
       { id: 3, name: "Brian Love", role: "Standard" }
     ];
 

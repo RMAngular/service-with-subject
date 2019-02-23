@@ -16,10 +16,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.users$ = this.userService.users$;
-    this.userService.list("Standard");
+    this.userService.loadByRole("Standard");
   }
 
   onRoleChange(role) {
-    this.userService.list(role);
+    this.userService.loadByRole(role);
   }
 }
