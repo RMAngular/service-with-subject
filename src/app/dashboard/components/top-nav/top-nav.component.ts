@@ -12,10 +12,12 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopNavComponent {
-  role: string = "Standard";
+  selectedRole: string = "Standard";
+  roles = [{ id: 1, name: 'Standard' }, { id: 2, name: 'Admin' }];
+
   @Output() roleChange = new EventEmitter<string>();
 
   onRoleChange() {
-    this.roleChange.emit(this.role);
+    this.roleChange.emit(this.selectedRole);
   }
 }

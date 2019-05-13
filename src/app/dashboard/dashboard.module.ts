@@ -6,10 +6,10 @@ import { DashboardComponent } from "./containers/dashboard/dashboard.component";
 import { UserListComponent } from "./components/user-list/user-list.component";
 import { TopNavComponent } from "./components/top-nav/top-nav.component";
 import { PermissionsComponent } from "./components/permissions/permissions.component";
-import { MatCard, MatGridListModule, MatCardModule } from "@angular/material";
+import { MatCard, MatGridListModule, MatCardModule, MatSelectModule } from "@angular/material";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, MatGridListModule, MatCardModule],
+  imports: [CommonModule, FormsModule, MatGridListModule, MatCardModule, MatSelectModule],
   declarations: [
     DashboardComponent,
     UserListComponent,

@@ -1,5 +1,9 @@
-<label for="role">Role: </label>
-<select name="role" [(ngModel)]="role" (change)="onRoleChange()">
-  <option>Admin</option>
-  <option>Standard</option>
-</select>
+<mat-form-field>
+  <mat-label>Role</mat-label>
+  <mat-select placeholder="Role" [(ngModel)]="selectedRole" (ngModelChange)="onRoleChange()">
+    <mat-option name="roles" *ngFor="let role of roles" [value]="role.name">
+      {{role.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+{{selectedValue}}
